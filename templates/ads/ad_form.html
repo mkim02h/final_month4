@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}{% if object %}Редактирование объявления{% else %}Новое объявление{% endif %}{% endblock %}
+
+{% block content %}
+    <div class="mx-auto" style="max-width: 640px;">
+        <h1 class="h3 mb-4">
+            {% if object %}Редактирование объявления{% else %}Новое объявление{% endif %}
+        </h1>
+
+        <div class="card">
+            <div class="card-body p-4">
+                <form method="post" class="django-form" novalidate>
+                    {% csrf_token %}
+                    {% include "includes/form_fields.html" %}
+                    <div class="d-flex gap-2">
+                        <button type="submit" class="btn btn-primary">
+                            {% if object %}Сохранить{% else %}Опубликовать{% endif %}
+                        </button>
+                        <a href="{% if object %}{{ object.get_absolute_url }}{% else %}{% url 'ad_list' %}{% endif %}"
+                           class="btn btn-outline-secondary">Отмена</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Вы вышли{% endblock %}
+
+{% block content %}
+    <div class="text-center mx-auto py-5" style="max-width: 420px;">
+        <i class="bi bi-box-arrow-right fs-1 text-body-secondary"></i>
+        <h1 class="h4 mt-3">Вы вышли из аккаунта</h1>
+        <p class="text-body-secondary">Ждём вас снова!</p>
+        <div class="d-flex justify-content-center gap-2">
+            <a href="{% url 'login' %}" class="btn btn-primary">Войти снова</a>
+            <a href="{% url 'ad_list' %}" class="btn btn-outline-secondary">На главную</a>
+        </div>
+    </div>
+{% endblock %}

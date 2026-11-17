@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}Удаление объявления{% endblock %}
+
+{% block content %}
+    <div class="mx-auto" style="max-width: 520px;">
+        <div class="card border-danger">
+            <div class="card-body p-4 text-center">
+                <i class="bi bi-exclamation-triangle fs-1 text-danger"></i>
+                <h1 class="h4 mt-3">Удалить объявление?</h1>
+                <p class="text-body-secondary">
+                    Объявление «{{ ad.title }}» будет удалено без возможности восстановления.
+                </p>
+
+                {# Удаление только POST-запросом с CSRF-токеном #}
+                <form method="post" class="d-flex justify-content-center gap-2">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger">
+                        <i class="bi bi-trash me-1"></i>Да, удалить
+                    </button>
+                    <a href="{{ ad.get_absolute_url }}" class="btn btn-outline-secondary">Отмена</a>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
